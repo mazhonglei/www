@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='../libs/angular.min.js'></script>
+  <style>
+  .bg{
+    color: red;
+  }
+  </style>
+</head>
+
+<body ng-app='app'>
+  <ul ng-controller="ctrl">
+    <li>{{message|uppercase}}</li>
+    <li>{{message|lowercase}}</li>
+    <li>{{time|date:"yyyy-MM-dd hh:mm:ss"}}</li>
+    <li>{{money|currency}}</li>
+    <li>{{money|currency:"￥"}}</li>
+    <li>{{obj}}</li>
+    <li>{{obj|json}}</li>
+    <li>{{names}}</li>
+    <li>{{names|filter:'a'}}</li><!-- 包含有a的元素 -->
+    <li>{{message|limitTo:4}}</li>
+    <li>{{message|limitTo:-4}}</li>
+    <li ng-class="{bg:true}">{{names|limitTo:2}}</li>
+    <li>{{num|number}}</li>
+    <li>{{num|number:2}}</li><!-- 保留2位小数 -->
+    <li>{{num|number:-2}}</li><!-- 保留2位小数 -->
+    <li>{{nums|orderBy}}</li><!-- 默认升序 -->
+    <li>{{nums|orderBy:"":true}}</li><!-- 降序 -->
+    <li>{{names|orderBy}}</li><!-- 默认升序 -->
+    <li>{{names|orderBy:"":true}}</li><!-- 降序 -->
+    <li>{{stus|orderBy:["id","age"]}}</li><!-- 默认升序 -->
+    <li>{{stus|orderBy:"age":true}}</li><!-- 降序 -->
+    <li>
+      {{nums|orderBy:"-"}}<!-- 降序 --><br>
+      {{nums|orderBy:"+"}}<!-- 升序 -->
+      {{stus|orderBy:["+id","-age"]}}<br>
+      <li ng-repeat="n in names| orderBy">
+        {{n}}
+      </li>
+    </li>
+  </ul>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller("ctrl",["$scope",function($scope){
+    $scope.message="good good study DAY DAY UP";
+    $scope.time=new Date();
+    $scope.money=25;
+    $scope.obj={name:"张三",age:23};
+    $scope.names=['zhangsan','lisi','baby','rose'];
+    $scope.num=1234567890;
+    $scope.nums=[5,8,10,39];
+    $scope.stus=[
+      {id:101,name:"Mike",age:23},
+      {id:101,name:"Jack",age:26},
+      {id:101,name:"Lily",age:25},
+      {id:101,name:"Allen",age:29},
+      {id:101,name:"Rose",age:20},
+    ]
+    
+    
+  }])
+</script>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='../libs/angular.min.js'></script>
+</head>
+
+<body ng-app='app'>
+  <div ng-controller="ctrl">
+<input type="text" ng-model="num1" ng-change="fn1()">+<input type="text" ng-model="num2" ng-change="fn1()">{{newNum1}}+{{newNum2}}={{sum}}
+  </div>
+</body>
+<script>
+  var app = angular.module('app', []);
+
+  app.controller("ctrl",["$scope",function($scope){
+    $scope.fn1=function(){
+    $scope.newNum1=Number($scope.num1);
+    $scope.newNum2=Number($scope.num2);
+    $scope.sum=Number($scope.newNum1)+Number($scope.newNum2);
+    }
+   
+   
+    
+
+  }])
+</script>
+
+</html>

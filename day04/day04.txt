@@ -1,0 +1,63 @@
+1.指令
+  1)什么是指令?
+  指令就是angularjs对html标签属性的一个扩展
+  2)指令分为2种:内置指令,自定义指令
+  内置指令:angularjs自己已经定义好的指令,以ng-开头
+  是angularjs的核心内容
+  自定义指令:
+  3)内置指令:
+  ng-app:定义应用的名称,在页面中至少有一个元素指定该属性
+  ng-model:定义绑定数据的属性名称*绑定表单*
+  ng-controller:定义控制器的作用范围
+  ng-show/ng-hide:显示或隐藏某个元素
+  ng-if:判定指定该指令的元素是否存在
+  ng-bind:绑定数据,作用与{{表达式}}一样
+  ng-checked:设置默认选中
+  ng-src:引用外部文件路径 变量名写在表达式里
+  ng-readonly:
+  ng-disabled:只读,不可修改
+  ng-repeat:遍历数组,并将数组的每一个元素以当前节点单独显示出来
+  里面元素不能重复
+  重复加 track by $index
+   <li ng-repeat="stu in stus track by $index">
+       {{$index}} {{stu}}
+    </li>
+  ng-class:对html中class的封装
+  ng-switch:
+  ng-include:用于引入外部界面
+     1.使用""引入外部页面时,在路径外面还要添加一对''
+     ng-include="'路径'";
+     2.需要从服务器访问
+4.自定义指令
+  通过应用模块调用directive方法
+    app.directive();
+    1.自定义指令使用方式有4种:
+    E:element
+    A:attribute
+    C:class
+    M:mark//注释
+    2.默认只有EA两种方式可以使用
+    如果想要使用C或M的方式调用自定义指令,需要添加另一个属性:
+    restrict:"C";
+    restrict指定自定义指令的使用方式,如果不写,就采用默认的EA使用方式,
+    如果写了，就使用restrict指定的方式
+    3.使用M方式时,返回的数据必须是一个完整的节点,
+    需要添加一个属性:
+     replace:true
+    4.属性templateUrl
+      引入外部页面,需要通过服务器访问
+3.常见事件
+ ng-click
+ ng-mouseenetr
+ ng-change
+ ......
+ 4.数据绑定
+  1)单向数据绑定
+  2)双向事件绑定  
+  3)数据的初始化
+  ng-init
+
+  
+
+
+    

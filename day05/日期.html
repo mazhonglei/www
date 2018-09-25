@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  
+  <style>
+  .p1{
+    height: 100px;
+    border: solid 1px red;
+    text-align: center;
+    line-height: 100px;
+  }
+  </style>
+  
+</head>
+<body>
+  <p class="p1"></p>
+</body>
+<script>
+  function test(){
+    var date=new Date();
+    // console.log(date);
+    var year=date.getFullYear();
+    var month=date.getMonth()+1;
+    var day=date.getDate();
+    var week=date.getDay();
+    var arr=['日','一','二','三','四','五','六'];
+    var H=date.getHours();
+    H<10?'0'+H:H;
+    var M=date.getMinutes();
+    M<10?'0'+M:M;
+    var S=date.getSeconds();
+    S<10?'0'+S:S;
+    var p_obj=document.querySelector(".p1");
+    p_obj.innerHTML=year+"年"+month+"月"+day+"号"+"星期"+arr[week]+H+"时"+M+"分"+S+"秒";
+
+    }
+test();
+setInterval(test,1000);
+</script>
+</html>

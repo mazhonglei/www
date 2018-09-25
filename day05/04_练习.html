@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='../libs/angular.min.js'></script>
+</head>
+
+<body ng-app='app'>
+  <div ng-controller="ctrl">
+    <input type="text" ng-model="str">
+    <div>{{str|uppercase}}</div><!-- 转大写 -->
+    <div>{{str|lowercase}}</div><!-- 转小写 -->
+    
+    <div>{{str1|limitTo:-5|uppercase}}</div>
+    <input type="text" ng-model="num">
+    <div>{{num| number:1}}</div><!-- 保留小数点后一位 -->
+    <div>{{time | date:"yyyy-MM-dd hh:mm"}}</div><!-- 显示时间 -->
+    <div>{{obj | orderBy:"id"}}</div><!-- 升序 -->
+    <div>{{obj | orderBy:"id":true}}</div><!-- 降序 -->
+    <div>{{obj | orderBy:["-age","+id"]}}</div>
+    <div>{{obj|orderBy:"age":true:"id"}}</div><!-- age降序id升序 -->
+     <div>
+       {{obj|filter:{name:'a'} }}
+     </div> 
+  </div>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller("ctrl",["$scope",function ($scope){
+    $scope.str1="abcdefg";
+    $scope.time=new Date();
+    $scope.obj=[
+      {id:101,name:"Mike",age:22},
+      {id:103,name:"Jack",age:22},
+      {id:105,name:"Rose",age:24},
+      {id:102,name:"Allen",age:24},
+      {id:104,name:"Lily",age:22}
+    ]
+    }])
+</script>
+
+</html>
