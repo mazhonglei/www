@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='../libs/angular.min.js'></script>
+</head>
+
+<body ng-app='app'>
+  <div ng-controller="ctrl">
+<div>{{random}}</div>
+
+<button ng-click='change()'>切换</button>
+<div>{{date|date:"yyyy-MM-dd HH:mm:ss"}}</div>
+  </div>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller("ctrl",function($scope,$interval){
+    $scope.random=1;
+    $interval(function(){
+    $scope.random= $scope.random+parseInt(Math.random()*99)+1;
+    },1000);
+    
+    var id=0; //预先设置一个id值
+    $scope.change=function(){
+      // 判断id是否有值,如果有,说明之前已经生产了一个计时器id
+      // 应该先关闭,如果没有,说明之前没有有效的计时器,可以生成新的计时器
+      // $interval.cancel(id);
+      if(!id){ //id没有值,生成新的计时器
+        id=$interval(function(){
+      $scope.date=new Date();
+    },1000)
+      }
+     else{//id有值,清除id,停止计时器
+        $interval.cancel(id);
+        id=null;//重置id变量
+     }
+     }
+    })
+   
+    
+ 
+</script>
+
+</html>

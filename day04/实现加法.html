@@ -16,18 +16,18 @@
 </body>
 <script>
   var app = angular.module('app', []);
-
-  app.controller("ctrl",["$scope",function($scope){
+    app.controller("ctrl",["$scope",function($scope){
     $scope.fn1=function(){
     $scope.newNum1=Number($scope.num1);
     $scope.newNum2=Number($scope.num2);
     $scope.sum=Number($scope.newNum1)+Number($scope.newNum2);
     }
    
-   
+   }])
     
 
-  }])
+  
+ 
 </script>
 
 </html>

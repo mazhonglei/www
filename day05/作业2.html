@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='../libs/angular.min.js'></script>
+</head>
+
+<body ng-app='app'>
+  <div ng-controller='ctrl'>
+    <input type="text" ng-model="str" ng-change="ch()">
+    <div>{{newStr}}</div>
+  </div>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller("ctrl",['$scope',function($scope){
+    $scope.ch=function(){
+  //获取数据
+  
+  // 拆分字符串
+  var arr=$scope.str.split("");
+  for(var i=0;i<arr.lengtn;i++){
+    if(arr[i]==arr[i].toUpperCase()){
+      // 变小写
+      arr[i]=arr[i].toLowerCase();
+    }else{
+      // 变大写
+      arr[i]=arr[i].toUpperCase();
+    }
+  }$scope.newStr=arr.join("");
+    }
+  
+  }])
+</script>
+
+</html>

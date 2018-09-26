@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='../libs/angular.min.js'></script>
+</head>
+
+<body ng-app='app'>
+  <div ng-controller="ctrl">
+    <button ng-click='change()'>点击</button>
+    <div>{{random}}</div>
+  </div>
+ 
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller("ctrl",["$scope","$interval",function($scope,$interval){
+    var id;
+    $scope.change=function(){
+      var id=$interval(function(){
+        for(var i=0;i<=5;i++){
+          if(i==5){
+          $interval.cancel(id);
+        }else{
+           $scope.random=(parseInt(Math.random()*99+1));
+        }
+        }
+      },1000)
+       
+     
+    }
+  }])
+    
+</script>
+
+</html>
